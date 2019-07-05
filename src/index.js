@@ -1,4 +1,8 @@
-import './index.css';
-import BlockGrid from './BlockGrid';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-window.addEventListener('DOMContentLoaded', () => new BlockGrid().render());
+import App from './App.js';
+
+import './index.css';
+
+ReactDOM.render(<App />, document.querySelector('#root'));

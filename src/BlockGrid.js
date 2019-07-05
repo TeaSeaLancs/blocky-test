@@ -1,46 +1,42 @@
+import React, { useCallback } from 'react';
+
 import Block from './Block';
 
-class BlockGrid {
-  constructor(width = 10, height = 10) {
-    this.width = width;
-    this.height = height;
-    this.grid = [];
+export default function BlockGrid({ width, height, grid = [], onBlockRemove }) {
+  // We de-reference the DOM event here so that we're supplying a pure X,Y coordinate for onBlockClick
+  // That way we're keeping all rendering local to this component and not mixing it with business logic.
+  const onBlockClick = useCallback(
+    event => {
+      const { x, y } = event.target.dataset;
+      onBlockRemove(x, y);
+    },
+    [onBlockRemove]
+  );
 
-    for (let x = 0; x < this.width; x++) {
-      const col = [];
-      for (let y = 0; y < this.height; y++) {
-        col.push(new Block(x, y));
-      }
+  const blocks = grid.map((col, x) => {
+    const row = col.map((block, y) => {
+      return (
+        <Block
+          key={`${x},${y}`}
+          x={x}
+          y={y}
+          color={block.colour}
+          onClick={onBlockClick}
+        />
+      );
+    });
 
-      this.grid.push(col);
-    }
-  }
+    return row;
+  });
 
-  render(el = document.getElementById('gridEl')) {
-    for (let x = 0; x < this.width; x++) {
-      const id = 'col_' + x;
-      const colEl = document.createElement('div');
-      colEl.id = id;
-      colEl.className = 'col';
-      el.appendChild(colEl);
+  const style = {
+    '--grid-width': width,
+    '--grid-height': height,
+  };
 
-      for (let y = this.height - 1; y >= 0; y--) {
-        const block = this.grid[x][y];
-        const id = `block_${x}x${y}`;
-        const blockEl = document.createElement('div');
-
-        blockEl.id = id;
-        blockEl.className = 'block';
-        blockEl.style.background = block.colour;
-        blockEl.addEventListener('click', evt => this.blockClicked(evt, block));
-        colEl.appendChild(blockEl);
-      }
-    }
-  }
-
-  blockClicked(e, block) {
-    console.log(e, block);
-  }
+  return (
+    <div id="grid" style={style}>
+      {blocks}
+    </div>
+  );
 }
-
-export default BlockGrid;

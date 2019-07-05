@@ -1,11 +1,23 @@
-export const COLOURS = ['red', 'green', 'blue', 'yellow'];
+import React from 'react';
 
-class Block {
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
-    this.colour = COLOURS[Math.floor(Math.random() * COLOURS.length)];
-  }
+import classNames from 'classnames';
+
+export default function Block({ x, y, color, onClick }) {
+  const style = {
+    backgroundColor: color,
+  };
+
+  const className = classNames('block', {
+    active: !!color,
+  });
+
+  return (
+    <div
+      className={className}
+      data-x={x}
+      data-y={y}
+      style={style}
+      onClick={onClick}
+    />
+  );
 }
-
-export default Block;
