@@ -2,22 +2,31 @@ import React from 'react';
 
 import classNames from 'classnames';
 
-export default function Block({ x, y, color, onClick }) {
-  const style = {
-    backgroundColor: color,
-  };
+export default function Block({
+  x,
+  y,
+  colour,
+  style,
+  onClick,
+  className,
+  ...props
+}) {
+  const mergedStyle = Object.assign({}, style, {
+    backgroundColor: colour,
+  });
 
-  const className = classNames('block', {
-    active: !!color,
+  const mergedClassName = classNames('block', className, {
+    active: !!(colour && onClick),
   });
 
   return (
     <div
-      className={className}
       data-x={x}
       data-y={y}
-      style={style}
+      className={mergedClassName}
+      style={mergedStyle}
       onClick={onClick}
+      {...props}
     />
   );
 }

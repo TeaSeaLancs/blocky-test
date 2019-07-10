@@ -10,20 +10,77 @@ body {
   height: 100%;
 }
 
-#grid {
+#game {
+  background-color: grey;
+  position: relative;
+
   width: 100%;
   height: 100%;
-  background-color: grey;
+}
+
+/* The original stub provided was hardwired to a 10x10 grid. Considering that one of the
+ * screenshots provided was of a 5x5 grid, it felt like a good goal to achieve to allow for
+ * arbitrary sized grids to be supported. Using CSS grid as opposed to floats & column elements is
+ * really just syntactic modern sugar, but I like it :)
+ */
+.grid {
+  width: 100%;
+  height: 100%;
 
   display: grid;
+  /* Having said that though, this one variable caused me some grief! Without this set, CSS grid 
+   * flows elements left to right then top to bottom, whereas we want the opposite (top to bottom, left to right).
+   * Without this set, the entire grid was inverted! */
+  grid-auto-flow: column;
   grid-template-columns: repeat(var(--grid-width, 0), 1fr);
   grid-template-rows: repeat(var(--grid-height, 0), 1fr);
+}
+
+.grid.floating {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  z-index: 1;
+  pointer-events: none;
+}
+
+@keyframes remove {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes drop {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(var(--drop-length, 0));
+  }
 }
 
 .block {
   width: 100%;
   height: 100%;
   display: relative;
+}
+
+.block.animate {
+  z-index: 2;
+}
+
+.block.animate--remove {
+  animation: remove 0.25s ease-out 0s forwards;
+}
+
+.block.animate--drop {
+  animation: drop 0.25s ease-in 0.25s forwards;
 }
 
 .block:not(.active) {

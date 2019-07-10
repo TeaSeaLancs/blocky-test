@@ -12,3 +12,14 @@ describe('Block', () => {
     });
   });
 });
+
+// Toggle the comments to initialise a deterministic, seeded grid
+//const seed = undefined;
+
+const seed = [
+  ['blue', 'green', 'yellow', 'red', 'green'],
+  ['green', 'green', 'green', 'yellow', 'red'],
+  ['green', 'red', 'blue', 'green', 'blue'],
+  ['yellow', 'yellow', 'blue', 'blue', 'blue'],
+  ['green', 'yellow', 'red', 'red', 'blue'],
+];
