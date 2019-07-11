@@ -16,7 +16,7 @@ export default function BlockGrid({ grid = [], onBlockRemove }) {
   const onBlockClick = useCallback(
     event => {
       const { x, y } = event.target.dataset;
-      onBlockRemove(x, y);
+      onBlockRemove(+x, +y); // Using +x,+y is a quick way of casting strings to integers, but a bit dirty
     },
     [onBlockRemove]
   );

@@ -15,17 +15,19 @@ export default function Block({
     backgroundColor: colour,
   });
 
+  const active = !!(colour && onClick);
   const mergedClassName = classNames('block', className, {
-    active: !!(colour && onClick),
+    active: active,
   });
 
   return (
     <div
       data-x={x}
       data-y={y}
+      data-testid={`block-${x}-${y}`}
       className={mergedClassName}
       style={mergedStyle}
-      onClick={onClick}
+      onClick={active ? onClick : null}
       {...props}
     />
   );

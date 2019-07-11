@@ -35,17 +35,17 @@ function initGrid(initialGrid) {
   };
 }
 
+// We use a reducer rather than a state variable here because the grid & transitions variables are interlinked.
+// This is exported as a custom hook so we can test the reducer directly.
+export function useGridReducer(initialGrid) {
+  return useReducer(gridReducer, initialGrid, initGrid);
+}
+
 export default function BlockyGame({ initialGrid }) {
   // It seems a bit odd at first glance to have an initial value which we copy into internal component state
   // but the benefit to this is that we can encapsulate all the game logic into this component and have the
   // component just reset itself when it gets a different grid passed in.
-
-  // We use a reducer rather than a state variable here because the grid & transitions variables are interlinked
-  const [{ grid, transitions }, dispatch] = useReducer(
-    gridReducer,
-    initialGrid,
-    initGrid
-  );
+  const [{ grid, transitions }, dispatch] = useGridReducer(initialGrid);
 
   const onBlockRemove = useCallback(
     (x, y) =>
