@@ -68,9 +68,10 @@ export default function TransitionsGrid({
   // This is a bit cheeky, we're assuming that the last transition will be the longest, so we
   // listen out for that last animation finishing to fire the onTransitionEnd event.
   const blocks = transitions.map((transition, i) => {
-    // It seems like more work to have the key for the animated block be the X,Y of the grid when i would
-    // suffice, but by doing this we ensure that if the user rapidly clicks, React doesn't re-use the same blocks
-    // which could cause weird animation errors, which it would do if it used i.
+    /* It seems like more work to have the key for the animated block be the X,Y of the grid when i would
+     * suffice, but by doing this we ensure that if the user rapidly clicks, React doesn't re-use the same blocks
+     * which could cause weird animation errors, which it would do if it used i.
+     */
     const {
       block: { x, y },
     } = transition;

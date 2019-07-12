@@ -84,23 +84,25 @@ export default function removeBlockAndUpdateGrid(oldGrid, [x, y]) {
 
   const transitions = [];
 
-  // Then go through the shape and mark everything in them as grey.
-  // We also add them as remove transitions for the nice animations.
+  /* Then go through the shape and mark everything in them as grey.
+   * We also add them as remove transitions for the nice animations.
+   */
   shape.forEach(block => {
     grid[block.x][block.y] = clearBlock(block);
     transitions.push({ block, action: 'remove' });
   });
 
-  // Now go through the entire grid and simulate gravity effects by having grey blocks
-  // pull down their nearest vertical neighbour's colour. We also collect the blocks which
-  // have been affected by this.
-  //
-  // Admittedly, we don't actually have to run gravity on every block in the grid, an alternate
-  // implementation would be to only run gravity on the blocks in the shape and then any blocks pulled
-  // down and this would work more efficiently, however it does assume that gravity will ever fall on
-  // blocks after a user click. If we wanted to do things like having extra blocks fall from the top later
-  // we would have to change this, so while the way as implemented is (slightly) less efficient, it's more
-  // flexible in the long run.
+  /* Now go through the entire grid and simulate gravity effects by having grey blocks
+   * pull down their nearest vertical neighbour's colour. We also collect the blocks which
+   * have been affected by this.
+   *
+   * Admittedly, we don't actually have to run gravity on every block in the grid, an alternate
+   * implementation would be to only run gravity on the blocks in the shape and then any blocks pulled
+   * down and this would work more efficiently, however it does assume that gravity will ever fall on
+   * blocks after a user click. If we wanted to do things like having extra blocks fall from the top later
+   * we would have to change this, so while the way as implemented is (slightly) less efficient, it's more
+   * flexible in the long run.
+   */
   reduceGrid(
     grid,
     (transitions, block) => {

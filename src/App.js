@@ -14,15 +14,17 @@ import { createRandomGrid } from './util/createGrid';
  */
 
 export default function App({ width = 10, height = 10 }) {
-  // Ideally we would want to avoid having React components creating randomised data inside them
-  // because a React app should be as close to view = f(data), but in this case we want to create
-  // a randomised grid every time we load the page, so we do this by memoising the value based on the width
-  // and height. We could also just use a state variable instead, but this way has the benefit that
-  // we could change the width & height passed into App and have it automatically update.
+  /* Ideally we would want to avoid having React components creating randomised data inside them
+   * because a React app should be as close to view = f(data), but in this case we want to create
+   * a randomised grid every time we load the page, so we do this by memoising the value based on the width
+   * and height. We could also just use a state variable instead, but this way has the benefit that
+   * we could change the width & height passed into App and have it automatically update.
+   */
   const grid = useMemo(() => createRandomGrid(width, height), [width, height]);
 
-  // We _could_ just collapse the BlockyGrid element into here as well because otherwise this isn't
-  // really doing much, but I like having the distinction because it means that we could add other bits
-  // around resetting the game or adding "well done!" screens here later.
+  /* We _could_ just collapse the BlockyGrid element into here as well because otherwise this isn't
+   * really doing much, but I like having the distinction because it means that we could add other bits
+   * around resetting the game or adding "well done!" screens here later.
+   */
   return <BlockyGame initialGrid={grid} />;
 }

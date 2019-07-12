@@ -2,9 +2,6 @@ import { createBlockRepresentation } from './blockUtils';
 
 export const COLOURS = ['red', 'green', 'blue', 'yellow'];
 
-// As much as I am a fan of the class-based Block which was provided in the stubs, I think
-// it's preferable to keep the data stored within React as plain objects as much as possible so
-// I decided to use a plain object with some modifier functions instead.
 export function createRandomGrid(width, height) {
   const grid = [];
 

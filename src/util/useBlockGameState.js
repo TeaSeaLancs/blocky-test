@@ -33,9 +33,10 @@ function initGrid({ grid = [], transitions = [] }) {
   };
 }
 
-// We use a reducer rather than a state variable here because the grid & transitions variables are interlinked.
-// We can also encapsulate all of the relevant actions here in a custom reducer to make it easy to hook a UI
-// into the game logic.
+/* We use a reducer rather than a state variable here because the grid & transitions variables are interlinked.
+ * We can also encapsulate all of the relevant actions here in a custom reducer to make it easy to hook a UI
+ * into the game logic.
+ */
 export default function useBlockGameState(initialState) {
   const [state, dispatch] = useReducer(gridReducer, initialState, initGrid);
 
