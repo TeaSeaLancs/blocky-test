@@ -24,14 +24,14 @@ exports[`BlockGrid renders a grid of blocks as passed 1`] = `
       data-testid="block-0-2"
       data-x="0"
       data-y="2"
-      style="background-color: yellow;"
+      style="background-color: green;"
     />
     <div
       class="block active"
       data-testid="block-0-3"
       data-x="0"
       data-y="3"
-      style="background-color: red;"
+      style="background-color: yellow;"
     />
     <div
       class="block active"
@@ -59,7 +59,7 @@ exports[`BlockGrid renders a grid of blocks as passed 1`] = `
       data-testid="block-1-2"
       data-x="1"
       data-y="2"
-      style="background-color: green;"
+      style="background-color: red;"
     />
     <div
       class="block active"
@@ -73,21 +73,21 @@ exports[`BlockGrid renders a grid of blocks as passed 1`] = `
       data-testid="block-1-4"
       data-x="1"
       data-y="4"
-      style="background-color: red;"
+      style="background-color: yellow;"
     />
     <div
       class="block active"
       data-testid="block-2-0"
       data-x="2"
       data-y="0"
-      style="background-color: green;"
+      style="background-color: yellow;"
     />
     <div
       class="block active"
       data-testid="block-2-1"
       data-x="2"
       data-y="1"
-      style="background-color: red;"
+      style="background-color: green;"
     />
     <div
       class="block active"
@@ -101,21 +101,21 @@ exports[`BlockGrid renders a grid of blocks as passed 1`] = `
       data-testid="block-2-3"
       data-x="2"
       data-y="3"
-      style="background-color: green;"
+      style="background-color: blue;"
     />
     <div
       class="block active"
       data-testid="block-2-4"
       data-x="2"
       data-y="4"
-      style="background-color: blue;"
+      style="background-color: red;"
     />
     <div
       class="block active"
       data-testid="block-3-0"
       data-x="3"
       data-y="0"
-      style="background-color: yellow;"
+      style="background-color: red;"
     />
     <div
       class="block active"
@@ -129,7 +129,7 @@ exports[`BlockGrid renders a grid of blocks as passed 1`] = `
       data-testid="block-3-2"
       data-x="3"
       data-y="2"
-      style="background-color: blue;"
+      style="background-color: green;"
     />
     <div
       class="block active"
@@ -143,7 +143,7 @@ exports[`BlockGrid renders a grid of blocks as passed 1`] = `
       data-testid="block-3-4"
       data-x="3"
       data-y="4"
-      style="background-color: blue;"
+      style="background-color: red;"
     />
     <div
       class="block active"
@@ -157,21 +157,21 @@ exports[`BlockGrid renders a grid of blocks as passed 1`] = `
       data-testid="block-4-1"
       data-x="4"
       data-y="1"
-      style="background-color: yellow;"
+      style="background-color: red;"
     />
     <div
       class="block active"
       data-testid="block-4-2"
       data-x="4"
       data-y="2"
-      style="background-color: red;"
+      style="background-color: blue;"
     />
     <div
       class="block active"
       data-testid="block-4-3"
       data-x="4"
       data-y="3"
-      style="background-color: red;"
+      style="background-color: blue;"
     />
     <div
       class="block active"

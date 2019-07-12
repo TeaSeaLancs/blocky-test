@@ -16,7 +16,7 @@ function getBlockAnimationProps({ action, length }) {
   return { className, style };
 }
 
-function AnimatedBlock({ transition, ...props }) {
+function AnimatedBlock({ transition, onAnimationEnd, ...props }) {
   const {
     block: { x, y, colour },
   } = transition;
@@ -35,13 +35,18 @@ function AnimatedBlock({ transition, ...props }) {
     gridRow: y + 1,
   };
 
+  // We set a specific data-testid on blocks which have an animation end event so we can find them in tests
+  const testid = onAnimationEnd ? 'animated-block--with-listener' : undefined;
+
   return (
     <div style={style}>
       <Block
         x={x}
         y={y}
         colour={colour}
+        data-testid={testid}
         {...getBlockAnimationProps(transition)}
+        onAnimationEnd={onAnimationEnd}
         {...props}
       />
     </div>

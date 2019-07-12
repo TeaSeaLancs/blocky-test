@@ -1,3 +1,7 @@
+/* In a more realistic environment I would probably split these out into per-component CSS files, but
+ * considering how little CSS there is here, it seemed overkill?
+ */
+
 body {
   margin: 0;
   padding: 0;

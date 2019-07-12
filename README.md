@@ -13,7 +13,7 @@ yarn start
 # or `npm start`
 ```
 
-`http://localhost:9100/` will open automatically on the blocky app, live-reloading as you develop.
+`http://localhost:3000/` will open automatically on the blocky app, live-reloading as you develop.
 
 Use `yarn test` to run the unit tests on the terminal. `yarn test --watch` will only run test files relevant to changes since your last commit, and rerun them every time you save.
 
